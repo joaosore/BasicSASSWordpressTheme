@@ -1,25 +1,69 @@
-# Basic SASS Wordpress Theme
-A basic wordpress theme with SASS.
+Iniciando o Projeto
 
-This theme is based on _s structure and modified to support SASS for high projects..
+	npm install
+	npm run watch
+
+Compilando para produtoção
+
+	npm run prod
+
+Estruturas de Pasta
+
+JS
+
+	Thema/src/js/modulos/PASTA_DO_MODULO/MODULOS.js
+
+	Criado o Modulo incluir no index.js
+
+	import "./modulos/PASTA_DO_MODULO/MODULOS.js";
+
+SCSS
+
+	Thema/src/scss/stylesheets/templates/pages/PASTA_DA_PAGINA/PASTA_DAS_SECÇÕES/_LG.scss, _MD.scss, _SM.scss, _XL.scss, _XS.scss.
+	Copiar os arquivos em Thema/src/scss/model.
+
+	Copiado os arquivos incluir no Thema/src/scss/stylesheets/templates/_page.scss.
+
+	//PASTA_DA_PAGINA
+	@import "pages/PASTA_DA_PAGINA/PASTA_DAS_SECÇÕES/XL";
+	@import "pages/PASTA_DA_PAGINA/PASTA_DAS_SECÇÕES/LG";
+	@import "pages/PASTA_DA_PAGINA/PASTA_DAS_SECÇÕES/MD";
+	@import "pages/PASTA_DA_PAGINA/PASTA_DAS_SECÇÕES/SM";
+	@import "pages/PASTA_DA_PAGINA/PASTA_DAS_SECÇÕES/XS";
+
+Paginas Views
+
+	Criando uma Pagina em Thema/NOME_DA_PAGINA.php
+
+	<?php
+	/**
+	 * 
+	 * Template Name: Home
+	 *
+	 * @package jd
+	 *
+	 */
+
+	get_header(); 
 
 
-## Dev dependencies:
-- SASS installed
+	get_footer();
 
+Paginas Include
 
-## Libraries included:
-- Bootstrap 3
-- jQuery ~
+	Criando uma Pagina em Thema/pages-inc/PASTA_DA_PAGINA/SECÇÕES.php
 
+	Criando a função da pagina em Thema/pages-inc/include.php
 
-## SASS's organization
-- The file /style.scss import all other files.
+	function get_section_NOME_DA_SECÇÃO()
+	{
+		include_once get_template_directory() . '/pages-inc/PASTA_DA_PAGINA/SECÇÕES.php';
+	}
 
-- The SASS files is at /assets/stylesheets, separated by modules, partials, templates and vendor(for third parties styles);
+Controllers
 
-- The compiled file style.css is set on .gitignore file for preventing conflicts in this file. For build this file locally, run:
-```bash
-sass --update style.scss:style.css
-```
+	Criando um Pagina de Funções em Thema/controllers/functions/NOME_DA_FUNÇÃO.php
 
+	Adicionando a função no Escopo do Projeto Thema/controllers/include.php
+
+	include "functions/NOME_DA_FUNÇÃOv.php"; 

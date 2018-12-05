@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package BSWT
+ * @package jd
  */
 
 get_header(); ?>

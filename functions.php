@@ -1,13 +1,13 @@
 <?php
 /**
- * BSWT functions and definitions
+ * jd functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package BSWT
+ * @package jd
  */
 
-if ( ! function_exists( 'bswt_setup' ) ) :
+if ( ! function_exists( 'jd_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'bswt_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function bswt_setup() {
+function jd_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on BSWT, use a find and replace
-	 * to change 'bswt' to the name of your theme in all the template files.
+	 * If you're building a theme based on jd, use a find and replace
+	 * to change 'jd' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'bswt', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'jd', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function bswt_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'bswt' ),
+		'menu-1' => esc_html__( 'Primary', 'jd' ),
 	) );
 
 	/*
@@ -60,7 +60,7 @@ function bswt_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'bswt_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'jd_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
@@ -69,7 +69,8 @@ function bswt_setup() {
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
 endif;
-add_action( 'after_setup_theme', 'bswt_setup' );
+add_action( 'after_setup_theme', 'jd_setup' );
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -78,51 +79,28 @@ add_action( 'after_setup_theme', 'bswt_setup' );
  *
  * @global int $content_width
  */
-function bswt_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'bswt_content_width', 640 );
+function jd_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'jd_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'bswt_content_width', 0 );
+add_action( 'after_setup_theme', 'jd_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function bswt_widgets_init() {
+function jd_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'bswt' ),
+		'name'          => esc_html__( 'Sidebar', 'jd' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'bswt' ),
+		'description'   => esc_html__( 'Add widgets here.', 'jd' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'bswt_widgets_init' );
-
-/**
- * Enqueue scripts and styles.
- */
-function bswt_scripts() {
-	// Styles
-	wp_register_style( 'bootstrap-style', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css' );
-	wp_enqueue_style( 'bootstrap-style' );
-	wp_enqueue_style( 'bswt-style', get_stylesheet_uri() );
-	
-	// Vendor and Libraries
-	wp_enqueue_script( 'jquery-js', get_template_directory_uri() . '/node_modules/jquery/dist/jquery.min.js', array(), '20171110', true );
-	wp_enqueue_script( 'jquery-mask-plugin', get_template_directory_uri() . '/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js', array(), '20171110', true );
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', array(), '20171110', true );
-
-	// Main JS
-	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array(), '20171110', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'bswt_scripts' );
+add_action( 'widgets_init', 'jd_widgets_init' );
 
 /**
  * Implement the Custom Header feature.
@@ -148,3 +126,5 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+require get_template_directory() . '/controllers/include.php';
+require get_template_directory() . '/pages-inc/include.php';

@@ -8,33 +8,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package BSWT
+ * @package jd
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses bswt_header_style()
+ * @uses jd_header_style()
  */
-function bswt_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'bswt_custom_header_args', array(
+function jd_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'jd_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'bswt_header_style',
+		'wp-head-callback'       => 'jd_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'bswt_custom_header_setup' );
+add_action( 'after_setup_theme', 'jd_custom_header_setup' );
 
-if ( ! function_exists( 'bswt_header_style' ) ) :
+if ( ! function_exists( 'jd_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see bswt_custom_header_setup().
+ * @see jd_custom_header_setup().
  */
-function bswt_header_style() {
+function jd_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	/*
